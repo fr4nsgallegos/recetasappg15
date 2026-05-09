@@ -23,8 +23,15 @@ class TextformfieldPage extends StatelessWidget {
                     //textFormfield es el/los campos del formulario
                     TextFormField(
                       controller: _emailController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Ingrese un correo";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         filled: true,
+
                         hintText: "Ingresa tu correo",
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
@@ -37,6 +44,14 @@ class TextformfieldPage extends StatelessWidget {
                     SizedBox(height: 24),
                     TextFormField(
                       controller: _passwordController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Ingrese una constraseña";
+                        } else if (value.length < 6) {
+                          return "Debe tener al menos 6 caracteres";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         filled: true,
                         hintText: "Ingresa tu contraseña",
@@ -50,7 +65,11 @@ class TextformfieldPage extends StatelessWidget {
                     ),
                     SizedBox(height: 32),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate() == true) {
+                          print("Formulario válido");
+                        }
+                      },
                       child: Text("Enviar formulario"),
                     ),
                   ],
