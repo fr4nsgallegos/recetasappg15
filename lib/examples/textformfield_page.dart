@@ -26,6 +26,12 @@ class TextformfieldPage extends StatelessWidget {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Ingrese un correo";
+                        } else if (value.length < 6) {
+                          return "El correo debe tener al menos 6 caracteres";
+                        } else if (!RegExp(
+                          "[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}",
+                        ).hasMatch(value)) {
+                          return "Ingresa un correo válido";
                         }
                         return null;
                       },
@@ -66,8 +72,21 @@ class TextformfieldPage extends StatelessWidget {
                     SizedBox(height: 32),
                     ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState!.validate() == true) {
+                        if (_formKey.currentState!.validate()) {
                           print("Formulario válido");
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Form correcto, enviando"),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Revisa las alertas!"),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
                         }
                       },
                       child: Text("Enviar formulario"),
