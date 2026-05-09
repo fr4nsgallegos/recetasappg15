@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 
-class TextfieldPage extends StatelessWidget {
+class TextfieldPage extends StatefulWidget {
+  @override
+  State<TextfieldPage> createState() => _TextfieldPageState();
+}
+
+class _TextfieldPageState extends State<TextfieldPage> {
   TextEditingController _emailController = TextEditingController();
+
+  bool _hasError = false;
+
+  void _validarCorreo() {
+    String correo = _emailController.text;
+    if (correo.contains("@")) {
+      _hasError = false;
+    } else {
+      _hasError = true;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +47,14 @@ class TextfieldPage extends StatelessWidget {
                 maxLines: 2, //máximo de lineas
                 textCapitalization: TextCapitalization
                     .sentences, //pone en maýuscula segun lo configuremos
+                // onChanged: (value) => _validarCorreo(),
                 decoration: InputDecoration(
+                  errorText: _hasError ? "Formato inválido" : null,
                   filled: true, //rellena de color al field
-                  fillColor: Colors.yellowAccent, //Color de fondo
+                  fillColor: Colors.grey.shade300, //Color de fondo
                   labelText: "Correo",
                   hintText: "Ejemplo@correo.com",
-                  helperText: "Ingresa un correo válido",
+                  helperText: "Ingresa un correo completo",
                   suffixIcon: Icon(Icons.person),
                   border: OutlineInputBorder(
                     // borderSide: BorderSide(color: Colors.green, width: 4),
@@ -56,6 +76,15 @@ class TextfieldPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                   ),
                 ),
+              ),
+
+              SizedBox(height: 32),
+
+              ElevatedButton(
+                onPressed: () {
+                  _validarCorreo();
+                },
+                child: Text("VALIDAR"),
               ),
             ],
           ),
