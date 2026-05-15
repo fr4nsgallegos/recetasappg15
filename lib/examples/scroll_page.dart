@@ -18,27 +18,36 @@ class ScrollPage extends StatelessWidget {
     print(screenHeigth);
     return Scaffold(
       appBar: AppBar(title: Text("App bar")),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-              _buildContainer(),
-            ],
+      body: Column(
+        children: [
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Expanded(
+            child: SingleChildScrollView(
+              // scrollDirection: Axis.horizontal, //scroll horizonta, funciona con un child Row
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                  _buildContainer(),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
