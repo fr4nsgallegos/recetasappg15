@@ -17,6 +17,7 @@ class ListviewPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("List View Page")),
       body: ListView.separated(
+        // scrollDirection: Axis.horizontal, //parta que sea de manera horizontal
         itemBuilder: (context, index) {
           return _buildContainer(index.toString());
         },

@@ -32,12 +32,56 @@ class ScrollPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ...List.generate(50, (index) {
+                    SizedBox(
+                      height: 200,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return _buildContainer("$index listview");
+                        },
+                        separatorBuilder: (context, index) {
+                          return Container(
+                            width: 15,
+                            height: 50,
+                            color: Colors.cyan,
+                          );
+                        },
+                        itemCount: 100,
+                      ),
+                    ),
+
+                    ...List.generate(5, (index) {
                       print(index);
                       return _buildContainer(index.toString());
                     }),
 
-                    // _buildContainer(),
+                    _buildContainer("Hola"),
+
+                    SizedBox(
+                      height: 200,
+                      child: ListView.builder(
+                        itemCount: 15,
+                        itemBuilder: (BuildContext context, int index) {
+                          return _buildContainer("$index LISTVIEW");
+                        },
+                      ),
+                    ),
+
+                    ...List.generate(
+                      10,
+                      (index) => _buildContainer(index.toString()),
+                    ),
+
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          ...List.generate(10, (index) {
+                            return _buildContainer(index.toString());
+                          }),
+                        ],
+                      ),
+                    ),
                     // _buildContainer(),
                     // _buildContainer(),
                     // _buildContainer(),
