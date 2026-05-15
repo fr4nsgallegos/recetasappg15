@@ -16,13 +16,23 @@ class ListviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("List View Page")),
-      body: ListView.builder(
-        itemCount: 100,
+      body: ListView.separated(
         itemBuilder: (context, index) {
-          print("MOSTRANDO: $index");
           return _buildContainer(index.toString());
         },
+        separatorBuilder: (context, index) {
+          return Container(width: 300, height: 10, color: Colors.green);
+        },
+        itemCount: 150,
       ),
+      // LISTVIEW BUILDER
+      // ListView.builder(
+      //   itemCount: 100,
+      //   itemBuilder: (context, index) {
+      //     print("MOSTRANDO: $index");
+      //     return _buildContainer(index.toString());
+      //   },
+      // ),
 
       // LIST VIEW SIMPLE
       // ListView(
