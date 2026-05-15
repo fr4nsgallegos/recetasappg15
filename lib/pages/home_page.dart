@@ -49,6 +49,7 @@ Una vez listo, retirar el waffle, disponer sobre un plato y decorar con crema ch
             children: [
               TextField(
                 controller: _titleController,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: "Ingresa el título",
                   hintStyle: TextStyle(color: Colors.white),
@@ -63,6 +64,7 @@ Una vez listo, retirar el waffle, disponer sobre un plato y decorar con crema ch
               SizedBox(height: 16),
 
               TextField(
+                style: TextStyle(color: Colors.white),
                 controller: _preparationController,
                 decoration: InputDecoration(
                   labelText: "Preparación",
@@ -71,6 +73,7 @@ Una vez listo, retirar el waffle, disponer sobre un plato y decorar con crema ch
               ),
               SizedBox(height: 16),
               TextField(
+                style: TextStyle(color: Colors.white),
                 controller: _urlImageController,
                 decoration: InputDecoration(
                   labelText: "Url de imagen",
@@ -78,7 +81,22 @@ Una vez listo, retirar el waffle, disponer sobre un plato y decorar con crema ch
                 ),
               ),
               SizedBox(height: 32),
-              ElevatedButton(onPressed: () {}, child: Text("Registrar receta")),
+              ElevatedButton(
+                onPressed: () {
+                  RecetaModel recetaModelAux = RecetaModel(
+                    title: _titleController.text,
+                    preparation: _preparationController.text,
+                    urlImage: _urlImageController.text,
+                  );
+
+                  recetasList.add(recetaModelAux);
+                  _titleController.clear();
+                  _preparationController.clear();
+                  _urlImageController.clear();
+                  setState(() {});
+                },
+                child: Text("Registrar receta"),
+              ),
               SizedBox(height: 32),
 
               ...recetasList.map((receta) => RecetaCardWidget(receta)).toList(),
