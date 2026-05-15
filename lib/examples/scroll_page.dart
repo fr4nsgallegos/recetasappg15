@@ -57,14 +57,15 @@ class ScrollPage extends StatelessWidget {
 
                     _buildContainer("Hola"),
 
-                    SizedBox(
-                      height: 200,
-                      child: ListView.builder(
-                        itemCount: 15,
-                        itemBuilder: (BuildContext context, int index) {
-                          return _buildContainer("$index LISTVIEW");
-                        },
-                      ),
+                    ListView.builder(
+                      shrinkWrap:
+                          true, //le dice al listview no intentes ocupar el espacio infinito, ajusta tu tamaño al contenido
+                      physics:
+                          NeverScrollableScrollPhysics(), //No hagas scroll propio, el scroll lo manejará singlechildscrollview externo
+                      itemCount: 15,
+                      itemBuilder: (BuildContext context, int index) {
+                        return _buildContainer("$index LISTVIEWs");
+                      },
                     ),
 
                     ...List.generate(
