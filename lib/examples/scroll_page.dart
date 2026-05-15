@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 class ScrollPage extends StatelessWidget {
   const ScrollPage({super.key});
 
-  Widget _buildContainer() {
+  Widget _buildContainer(String text) {
     return Container(
-      height: 50,
-      width: 200,
+      height: 80,
+      width: 80,
       color: Colors.red,
       margin: EdgeInsets.all(16),
+      child: Center(child: Text(text, style: TextStyle(fontSize: 30))),
     );
   }
 
@@ -18,36 +19,43 @@ class ScrollPage extends StatelessWidget {
     print(screenHeigth);
     return Scaffold(
       appBar: AppBar(title: Text("App bar")),
-      body: Column(
-        children: [
-          Text("CABECERA 1"),
-          Text("CABECERA 1"),
-          Text("CABECERA 1"),
-          Text("CABECERA 1"),
-          Expanded(
-            child: SingleChildScrollView(
-              // scrollDirection: Axis.horizontal, //scroll horizonta, funciona con un child Row
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                  _buildContainer(),
-                ],
+      body: Center(
+        child: Column(
+          children: [
+            Text("CABECERA 1"),
+            Text("CABECERA 1"),
+            Text("CABECERA 1"),
+            Text("CABECERA 1"),
+            Expanded(
+              child: SingleChildScrollView(
+                // scrollDirection: Axis.horizontal, //scroll horizonta, funciona con un child Row
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...List.generate(50, (index) {
+                      print(index);
+                      return _buildContainer(index.toString());
+                    }),
+
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                    // _buildContainer(),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

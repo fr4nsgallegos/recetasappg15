@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 class ListviewPage extends StatelessWidget {
   const ListviewPage({super.key});
-  Widget _buildContainer() {
+  Widget _buildContainer(String text) {
     return Container(
-      height: 50,
-      width: 200,
+      height: 80,
+      width: 10,
       color: Colors.red,
       margin: EdgeInsets.all(16),
+      child: Center(child: Text(text, style: TextStyle(fontSize: 30))),
     );
   }
 
@@ -15,32 +16,21 @@ class ListviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("List View Page")),
-      body: ListView(
-        children: [
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-          _buildContainer(),
-        ],
+      body: ListView.builder(
+        itemCount: 100,
+        itemBuilder: (context, index) {
+          print("MOSTRANDO: $index");
+          return _buildContainer(index.toString());
+        },
       ),
+
+      // LIST VIEW SIMPLE
+      // ListView(
+      //   children: List.generate(50, (index) {
+      //     print(index);
+      //     return _buildContainer(index.toString());
+      //   }),
+      // ),
     );
   }
 }
