@@ -52,7 +52,6 @@ class TextformfieldPage extends StatelessWidget {
                       },
                       decoration: InputDecoration(
                         filled: true,
-
                         hintText: "Ingresa tu correo",
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
