@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SliverGridPage extends StatelessWidget {
-  const SliverGridPage({super.key});
+class SliverGridTab extends StatelessWidget {
+  const SliverGridTab({super.key});
 
   @override
   Widget build(BuildContext context) {

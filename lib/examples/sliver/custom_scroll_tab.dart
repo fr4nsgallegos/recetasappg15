@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 // )
 
 // CustomScrollView ->  es el contenedor principal que permite usar varios Slivers dentro de un solo scroll
-class CustomScrollPage extends StatelessWidget {
-  const CustomScrollPage({super.key});
+class CustomScrollTab extends StatelessWidget {
+  const CustomScrollTab({super.key});
 
   @override
   Widget build(BuildContext context) {
