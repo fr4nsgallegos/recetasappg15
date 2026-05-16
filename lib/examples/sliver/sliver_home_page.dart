@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recetasappg15/examples/sliver/custom_scroll_tab.dart';
 import 'package:recetasappg15/examples/sliver/persisten_header_tab.dart';
+import 'package:recetasappg15/examples/sliver/sliver_fixed_extentlist_tab.dart';
 import 'package:recetasappg15/examples/sliver/sliver_grid_tab.dart';
 import 'package:recetasappg15/examples/sliver/sliver_listbuilder_tab.dart';
 import 'package:recetasappg15/examples/sliver/sliver_padding_tab.dart';
@@ -11,7 +12,7 @@ class SliverHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Ejemplos de sliver"),
@@ -22,6 +23,7 @@ class SliverHomePage extends StatelessWidget {
               Text("Padding"),
               Text("Sliverbuilder"),
               Text("Persistent Header"),
+              Text("Extent List"),
             ],
           ),
         ),
@@ -32,6 +34,7 @@ class SliverHomePage extends StatelessWidget {
             SliverPaddingTab(),
             SliverListbuilderTab(),
             PersistenHeaderTab(),
+            SliverFixedExtentlistTab(),
           ],
         ),
       ),
