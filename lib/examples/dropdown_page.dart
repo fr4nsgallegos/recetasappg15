@@ -57,6 +57,27 @@ class _DropdownPageState extends State<DropdownPage> {
                 ),
               ),
             ),
+            SizedBox(height: 35),
+
+            // DROPDOWN PARA FOMULARIOS
+            DropdownButtonFormField(
+              // Tiene todas las características de un textformfield
+              decoration: InputDecoration(
+                labelText: "Selecciona un país",
+                border: OutlineInputBorder(),
+              ),
+              items: paises.map((pais) {
+                return DropdownMenuItem(child: Text(pais), value: pais);
+              }).toList(),
+              onChanged: (value) {
+                selectedValue = value;
+                setState(() {});
+              },
+              validator: (value) {
+                if (value == null) return "Por favor ingresa un país";
+                return null;
+              },
+            ),
           ],
         ),
       ),
