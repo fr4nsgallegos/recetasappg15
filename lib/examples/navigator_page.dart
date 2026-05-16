@@ -20,6 +20,16 @@ class NavigatorPage extends StatelessWidget {
               },
               child: Text("Ir a la página detalle"),
             ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetallePage()),
+                );
+              },
+              child: Text("ir a detalle sin retorno"),
+            ),
           ],
         ),
       ),
@@ -33,7 +43,7 @@ class DetallePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Detalle"), leading: Container()),
+      appBar: AppBar(title: Text("Detalle")),
 
       body: Center(
         child: Column(
